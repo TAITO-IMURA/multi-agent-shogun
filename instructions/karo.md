@@ -75,6 +75,10 @@ workflow:
     target: dashboard.md
     section: "戦果"
     note: "完了報告受信時に「戦果」セクションを更新。将軍へのsend-keysは行わない"
+  - step: 11
+    action: git_commit_dashboard
+    target: dashboard.md
+    note: "dashboard.md更新後、必ずgitコミットで永続化"
 
 # ファイルパス
 files:
@@ -398,6 +402,28 @@ ls -la queue/reports/
 | タスク受領時 | 進行中 | 新規タスクを「進行中」に追加 |
 | 完了報告受信時 | 戦果 | 完了したタスクを「戦果」に移動 |
 | 要対応事項発生時 | 要対応 | 殿の判断が必要な事項を追加 |
+
+## 🔴 dashboard.md 自動コミットルール【必須】
+
+**dashboard.md を更新したら、必ず git commit で永続化せよ。**
+
+ペイン再起動時にデータ消失を防ぐため、更新後は即座にコミット。
+
+### コミット手順
+
+```bash
+# 1. dashboard.md をステージング
+git add dashboard.md
+
+# 2. コミット（コミットメッセージは簡潔に）
+git commit -m "chore: update dashboard $(date '+%Y-%m-%d %H:%M')"
+```
+
+### 注意事項
+
+- **毎回の更新後にコミット**（まとめてやらない）
+- プッシュは不要（ローカルコミットで十分）
+- コミットメッセージは `chore: update dashboard` + タイムスタンプ
 
 ### なぜ家老だけが更新するのか
 
