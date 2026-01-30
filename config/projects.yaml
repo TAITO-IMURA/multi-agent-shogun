@@ -1,0 +1,16 @@
+projects:
+  - id: viluck_taxhub
+    name: "Viluck TaxHub"
+    path: "/Users/t.imura/Develop/viluck-taxhub"
+    branch: master
+    priority: high
+    status: active
+
+  - id: viluck_taxhub_feature
+    name: "Viluck TaxHub - AI Agent Core UX"
+    path: "/Users/t.imura/Develop/viluck-taxhub-worktrees/feature-111-ai-agent-core-ux"
+    branch: "feature/111-ai-agent-core-ux"
+    priority: high
+    status: active
+
+current_project: viluck_taxhub_feature

@@ -1,0 +1,92 @@
+queue:
+  - id: cmd_013
+    timestamp: "2026-01-30T12:14:51"
+    command: "Docker再起動時に依存関係がインストールされない問題を修正せよ"
+    project: viluck_taxhub_feature
+    priority: critical
+    status: pending
+    details: |
+      殿より報告：Docker再起動しても依存関係がインストールされない
+
+      対象ファイル: viluck-taxhub-worktrees/feature-111-ai-agent-core-ux/apps/loan-docs/Dockerfile
+
+      調査・修正事項：
+      1. apps/loan-docs/Dockerfile を確認し、npm install / pnpm install が正しく実行されているか
+      2. docker-compose.yml のボリュームマウントが node_modules を上書きしていないか
+      3. 必要に応じて Dockerfile または docker-compose.yml を修正
+
+  - id: cmd_012
+    timestamp: "2026-01-30T12:13:44"
+    command: "承認済みスキル2件を作成せよ"
+    project: multi-agent-shogun
+    priority: high
+    status: pending
+    details: |
+      以下のスキルを作成せよ：
+
+      1. strict-mode-guard
+         - StrictMode対策のuseEffectガードパターン
+         - SSE接続画面での重複実行を防ぐ
+
+      2. zustand-creation-guard
+         - Zustand persistでAPI重複呼び出しを防ぐパターン
+         - ストアに状態を持つ方式
+
+      保存先: ~/.claude/skills/
+
+  - id: cmd_011
+    timestamp: "2026-01-30T11:54:11"
+    command: "dashboard.md を git commit で永続化せよ"
+    priority: high
+    status: pending
+    details: |
+      スキル化候補2件（strict-mode-guard, zustand-creation-guard）が殿により承認された。
+      dashboard.md の更新内容を git commit で永続化せよ。
+
+  - id: cmd_010
+    timestamp: "2026-01-30T11:45:46"
+    command: "エージェント再起動スクリプトを作成せよ"
+    priority: high
+    status: pending
+    details: |
+      家老と足軽を再起動するシェルスクリプトを作成せよ。
+
+      ファイル名: restart_agents.sh
+
+      要件:
+      1. 家老(multiagent:0.0)と足軽(multiagent:0.1-8)を再起動
+      2. --dangerously-skip-permissions フラグ付きで起動
+      3. 起動後に各自の指示書を読ませる
+         - 家老: instructions/karo.md
+         - 足軽: instructions/ashigaru.md
+      4. 将軍(shogun:0.0)は再起動しない（殿が操作中のため）
+
+      処理の流れ:
+      1. 全員に /exit を送信してEnter
+      2. 終了を待つ(sleep)
+      3. claude --dangerously-skip-permissions で起動してEnter
+      4. 起動を待つ(sleep)
+      5. 指示書を読ませてEnter
+
+      注意: tmux send-keys でメッセージとEnterは別々に送ること
+
+  - id: cmd_004
+    timestamp: "2026-01-30T11:35:05"
+    command: "viluck-taxhub-worktrees の Dockerfile を整備せよ"
+    project: viluck_taxhub_feature
+    priority: high
+    status: completed
+
+  - id: cmd_003
+    timestamp: "2026-01-30T00:24:42"
+    command: "スキル化候補2件を作成せよ"
+    project: multi-agent-shogun
+    priority: high
+    status: completed
+
+  - id: cmd_001
+    timestamp: "2026-01-30T00:04:39"
+    command: "viluck-taxhub-worktrees/feature-111-ai-agent-core-ux のAI面談画面を修正せよ"
+    project: viluck_taxhub_feature
+    priority: high
+    status: completed
